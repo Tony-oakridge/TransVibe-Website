@@ -24,17 +24,34 @@ body {
 }
 </style> 
 
+<script>
+  fetch("https://ipinfo.io/json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (myJson) {
+    console.log(myJson);
+    document.getElementById("ipinfo").innerHTML = "IP: " + myJson.ip + " - " + myJson.country + ", " + myJson.region;
+  })
+  .catch(function (error) {
+    console.log("Error: " + error);
+  });
+</script>
+
 </head>
 <body> 
+
+  <div id="ipinfo" > 
+    IP: 
+    </div> 
+
 <div id=boxt2> 
 
-<div id=boxt1 > 
-lorem ipsum
-</div> 
- 
- <div id=boxt1 > 
-lorem ipsum
-</div> 
+
+<a type=“button” href="./" id=boxt1>
+  ddd
+</a>
+
 
  <div id=boxt1 > 
 lorem ipsum
