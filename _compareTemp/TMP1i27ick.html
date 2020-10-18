@@ -2,19 +2,17 @@
 <html><head>
 
 <script>
-	for (let step = 0; step < 10; step++) {
+	for (let step = 0; step < 18; step++) {
 	  fetch("http://86.21.122.94:25565/Api/getRecentJoin?interation=" + step)
 		  .then(function (response) {
 			return response.json();
 		  })
 		  .then(function (myJson) {
+			var tag = document.createElement("p");
+			var text = document.createTextNode("Username: " + myJson.userName);
+			tag.appendChild(text);
 			var element = document.getElementById("boxt2");
-		    element.innerHTML += 
-`<div class=float-child id=boxt1> 
-${myJson.userName} <br>
-${myJson.id} 
-</div>`;
-
+			element.appendChild(tag);
 
 			console.log(myJson);
 		  })
