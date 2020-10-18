@@ -24,88 +24,63 @@ client
   });
 
 client.on("ready", async () => {   
-	console.log("CLIENT");
-	console.log(client);
+	console.log("Ready!");
 });
 
 http.createServer((req, res) => {
-	
-		const urlObj = url.parse(req.url, true);
 
-	
-	
-		if (urlObj.query.code) {
-		const accessCode = urlObj.query.code;
-		const data = {
-			client_id: '767409581458194453',
-			client_secret: 'fp4yxDabFu3zznhHPU2C80jtqQweZu3X',
-			grant_type: 'authorization_code',
-			redirect_uri: 'http://transvibe.club:25565/',
-			code: accessCode,
-			scope: 'the scopes',
-		};
-
-		fetch('https://discord.com/api/oauth2/token', {
-			method: 'POST',
-			body: new URLSearchParams(data),
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-		})
-			.then(discordRes => discordRes.json())
-			.then(info => {
-				console.log(info);
-				return info;
-			})
-			.then(info => fetch('https://discord.com/api/users/@me', {
-				headers: {
-					authorization: `${info.token_type} ${info.access_token}`,
-				},
-			}))
-			.then(userRes => userRes.json())
-			.then(console.log);
-	}
-
-	if (urlObj.pathname === '/') {
-		responseCode = 200;
-		content = fs.readFileSync('../index.html');
-						res.writeHead(200, {
-					'content-type': 'text/html;charset=utf-8',
-				});
-
-				res.write(content);
-				res.end();
-		return;
-	}
-
-	
+	const urlObj = url.parse(req.url, true);
 
 	pathN = urlObj.pathname;
 	
-	if(pathN.startsWith("/Api/getRecentJoin"))
+	if(pathN.startsWith("/Api/getMaxUsers")) {
+		let guild = client.guilds.cache.find(c => c.id == '689925894764232788');
+		
+		res.setHeader('Content-Type', 'application/json');
+    	res.end(
+			
+		JSON.stringify(
+			{ 
+				count: guild.members.cache.array().length
+			}));
+		return;
+	}
+	
+	if(pathN.startsWith("/Api/getUser"))
 		{
-			console.log(client.guilds.cache.array());
+			let guild = client.guilds.cache.find(c => c.id == '689925894764232788');
+
+		//	for (let i = 0; i < guild.members.cache.array().length; i++) {
+		//		if(guild.members.cache.array()[UserIndex].id == "299709641271672832") {
+		//			var saved = guild.members.cache.array()[i];
+		//		}
+		//		console.log(guild.members.cache.array()[i].displayName);
+		//	}
 			
 			var queryStr = urlObj.search.substring(1);
 			var params = querystring.parse(queryStr);
-			console.log(params);
 			
-			const interationS = params.interation;
+			// Params
+			const UserIndex = params.UserIndex;
 
+			
 			res.setHeader('Content-Type', 'application/json');
     		res.end(
 			
 			JSON.stringify(
 				{ 
-					interation: interationS,
-					userName: "Conni!~#0920", 
-					id: 123456789, 
+					interation: UserIndex,
+					userName: guild.members.cache.array()[UserIndex].displayName, 
+					id: guild.members.cache.array()[UserIndex].id, 
 					timeSinceJoin: "A long time!"
-				} 
-			));
+				}));
 			return;
 		}
 
+	
+	
+	
+	
 	if(pathN.startsWith("/admin"))
 	{
 		// read file sample.html
@@ -117,7 +92,6 @@ http.createServer((req, res) => {
 				let content = data.toString('utf8');
 
 				console.log("Request made for!");
-				console.log(pathN);
 
 				res.writeHead(200, {
 					'content-type': 'text/html;charset=utf-8',
@@ -131,3 +105,5 @@ http.createServer((req, res) => {
 
 })
 .listen(port);
+
+client.login(config.token);

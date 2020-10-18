@@ -3,7 +3,7 @@
 
 <script>
 	for (let step = 0; step < 10; step++) {
-	  fetch("http://transvibe.club:25565/Api/getRecentJoin?interation=" + step)
+	  fetch("http://transvibe.clubs:25565/Api/getUser?UserIndex=" + step)
 		  .then(function (response) {
 			return response.json();
 		  })
