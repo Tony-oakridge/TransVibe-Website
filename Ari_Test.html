@@ -1,7 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html><head>
 
+<script>
+  fetch("http://86.21.122.94:25565/Api/getRecentJoin?interation=0")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (myJson) {
+    console.log(myJson);
+    document.getElementById("ipinfo").innerHTML = "IP: " + myJson.ip + " - " + myJson.country + ", " + myJson.region;
+  })
+  .catch(function (error) {
+    console.log("Error: " + error);
+  });
+</script>
+
+	
 <style> 
 .float-container {
     border: 3px solid #fff;
