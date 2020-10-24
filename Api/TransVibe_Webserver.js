@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
 const querystring = require('querystring');
+const fetch = require('node-fetch');
 
 const http = require('http');
 const url = require('url');
@@ -22,52 +23,87 @@ client
     console.warn("Warning! Fyre has disconnected!");
   });
 
+client.on("ready", async () => {   
+	console.log("Ready!");
+});
+
 http.createServer((req, res) => {
-	
+
 	const urlObj = url.parse(req.url, true);
 
 	pathN = urlObj.pathname;
 	
-	if(pathN.startsWith("/Api/getRecentJoin"))
+	if(pathN.startsWith("/Api/getMaxUsers")) {
+		let guild = client.guilds.cache.find(c => c.id == '689925894764232788');
+		
+		res.setHeader('Content-Type', 'application/json');
+    	res.end(
+			
+		JSON.stringify(
+			{ 
+				count: guild.members.cache.array().length
+			}));
+		return;
+	}
+	
+	if(pathN.startsWith("/Api/getUser"))
 		{
+			let guild = client.guilds.cache.find(c => c.id == '689925894764232788');
+
+		//	for (let i = 0; i < guild.members.cache.array().length; i++) {
+		//		if(guild.members.cache.array()[UserIndex].id == "299709641271672832") {
+		//			var saved = guild.members.cache.array()[i];
+		//		}
+		//		console.log(guild.members.cache.array()[i].displayName);
+		//	}
+			
 			var queryStr = urlObj.search.substring(1);
 			var params = querystring.parse(queryStr);
-			console.log(params);
 			
-			const interationS = params.interation;
+			// Params
+			const UserIndex = params.UserIndex;
 
+			
 			res.setHeader('Content-Type', 'application/json');
     		res.end(
 			
 			JSON.stringify(
 				{ 
-					interation: interationS,
-					userName: "Conni!~#0920", 
-					id: 123456789, 
+					interation: UserIndex,
+					userName: guild.members.cache.array()[UserIndex].displayName, 
+					id: guild.members.cache.array()[UserIndex].id, 
 					timeSinceJoin: "A long time!"
-				} 
-			));
+				}));
 			return;
 		}
 
-	// read file sample.html
-	fs.readFile('../Ari_Test.html',
-		// callback function that is called when reading file is done
-		function(err, data) { 
-			if (err) throw err;
-			// data is a buffer containing file content
-			let content = data.toString('utf8');
-		
-			console.log("Request made for!");
-			console.log(pathN);
+	
+	
+	
+	
+	if(pathN.startsWith("/admin"))
+	{
+		// read file sample.html
+		fs.readFile('../Ari_Test.html',
+			// callback function that is called when reading file is done
+			function(err, data) { 
+				if (err) throw err;
+				// data is a buffer containing file content
+				let content = data.toString('utf8');
 
-			res.writeHead(200, {
-				'content-type': 'text/html;charset=utf-8',
-			});
+				console.log("Request made for!");
 
-			res.write(content);
-			res.end();
+				res.writeHead(200, {
+					'content-type': 'text/html;charset=utf-8',
+				});
 
-	});
+				res.write(content);
+				res.end();
+
+		});		
+	}
+
 })
 .listen(port);
+
+client.login(config.token);
