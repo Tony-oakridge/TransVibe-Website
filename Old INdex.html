@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1; 
+  
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+  
+body {
+  background-color: grey;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+} 
+
+#boxt1 {
+  width: 85%;
+  border: 3px solid black;
+  padding: 2%;
+  margin: 5%;
+} 
+#boxt2 {
+  width: 92%;
+  border: 4px solid green;
+  padding: 1%;
+  margin: 2%;
+} 
+#boxt3 {
+  width: 90%;
+  border: 4px solid black;
+  padding: 1%;
+  margin: 2%;
+} 
+.
+</style> 
+
+<script>
+  fetch("https://ipinfo.io/json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (myJson) {
+    console.log(myJson);
+    document.getElementById("ipinfo").innerHTML = "IP: " + myJson.ip + " - " + myJson.country + ", " + myJson.region;
+  })
+  .catch(function (error) {
+    console.log("Error: " + error);
+  });
+</script>
+
+</head>
+<body> 
+
+  <div id="ipinfo" > 
+    IP: 
+    </div> 
+
+ <ul>
+  <li><a href="default.asp">Home</a></li>
+  <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>
+</ul> 
+
+
+
+<div id=boxt1 class="grid-container">
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+
+
+
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+</div>
+
+  </body>
+</html>
+
+=======
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1; 
+  
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+  
+body {
+  background-color: grey;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+} 
+
+#boxt1 {
+  width: 85%;
+  border: 3px solid black;
+  padding: 2%;
+  margin: 5%;
+} 
+#boxt2 {
+  width: 92%;
+  border: 4px solid green;
+  padding: 1%;
+  margin: 2%;
+} 
+#boxt3 {
+  width: 90%;
+  border: 4px solid black;
+  padding: 1%;
+  margin: 2%;
+} 
+.
+</style> 
+
+<script>
+  fetch("https://ipinfo.io/json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (myJson) {
+    console.log(myJson);
+    document.getElementById("ipinfo").innerHTML = "IP: " + myJson.ip + " - " + myJson.country + ", " + myJson.region;
+  })
+  .catch(function (error) {
+    console.log("Error: " + error);
+  });
+</script>
+
+</head>
+<body> 
+
+  <div id="ipinfo" > 
+    IP: 
+    </div> 
+
+ <ul>
+  <li><a href="default.asp">Home</a></li>
+  <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>
+</ul> 
+
+
+
+<div id=boxt1 class="grid-container">
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+
+
+
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+
+<div id=boxt2 class="grid-child ">
+ <div id=boxt3>    
+  <div class="dropdown">
+  <button class="dropbtn">actions</button>  
+  <div class="dropdown-content">
+  <a href="#">mute</a>
+  <a href="#">kick</a>
+  <a href="#">ban</a>
+  </div>
+</div> 
+<p style="display: inline;">test</p>
+    </div>
+</div>
+
+</div>
+
+  </body>
+</html>

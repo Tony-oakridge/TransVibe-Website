@@ -1,0 +1,36 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "transvibe web api",
+  "main": "TransVibe_Webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConniTheKiwi/TransVibe-Website.git"
+  },
+  "keywords": [
+    "tranvibe",
+    "web",
+    "api"
+  ],
+  "author": "Conni!~#0920",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConniTheKiwi/TransVibe-Website/issues"
+  },
+  "homepage": "https://github.com/ConniTheKiwi/TransVibe-Website#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "btoa": "^1.2.1",
+    "cors": "^2.8.5",
+    "discord.js": "^12.3.1",
+    "express": "^4.17.1",
+    "express-generator": "^4.16.1",
+    "form-data": "^3.0.0",
+    "qrcode": "^1.4.4",
+    "speakeasy": "^2.0.0"
+  }
+}
